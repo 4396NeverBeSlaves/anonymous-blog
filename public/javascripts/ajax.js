@@ -23,6 +23,11 @@ function get_articles(){
 	}
     xmlhttp.open('GET','/get_articles',true)
     xmlhttp.send()
+    // mdui.alert(" 欢迎你!",'',false,true,false);
+    const dialog1 = new mdui.Dialog("#dialog1", {
+        histroy: false
+      })
+    dialog1.open();
 }
 
 function post_articles(){
@@ -84,20 +89,7 @@ function goback(){
     });
 
 }
-//设置用户名
-function set_username(){
-    mdui.prompt('请输入用户名:', 
-        function (value) {
-          document.cookie="uid="+ value;
-          console.log(document.cookie)
-          mdui.alert('你输入了：' + value + '，点击了确认按钮');
-        },
-        function (value) {
-          mdui.alert('你输入了：' + value + '，点击了取消按钮');
-        }
-    )  
 
-}
 
 
 
@@ -137,15 +129,50 @@ function set_username(){
 //         }  
 //     })
 // }
+
+
+//主要运行函数
 $(document).ready(function(){
-    set_username()
     get_articles()
     post_page()
-
-
+    //检查并设置cookie
+    function setCookie(cname,cvalue,exdays){
+    	var d = new Date();
+    	d.setTime(d.getTime()+(exdays*24*60*60*1000));
+    	var expires = "expires="+d.toGMTString();
+    	document.cookie = cname+"="+cvalue+"; "+expires;
+    }
+    function getCookie(cname){
+    	var name = cname + "=";
+    	var ca = document.cookie.split(';');
+    	for(var i=0; i<ca.length; i++) {
+            var c = ca[i].trim();
+    		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+    	}
+    	return "";
+    }
+    // function checkCookie(){
+    //     var user=getCookie("uid");
+    // 	if (user!=""){
+    //         mdui.alert(user+" 欢迎你!");
+    //     }
+	//     else {
+	//     	user =mdui.prompt('请输入用户名:', 
+    //         function (user) {
+    //             if (user!="" && user!=null){
+    //             setCookie("uid",user,365);
+    //             mdui.alert(user+" 欢迎你!");
+    //     	    }
+    //         },
+    //         function (user) {
+    //         console.log('qqwew')
+    //         },
+    //         {confirmText:"确定",cancelText:"取消"}
+    //     ) 
+    //     }
+    // }
+    // checkCookie()
     // get_talks()
-    //滚动条位于最下面
-
     //popstate事件 点击前进后退
     // window.addEventListener("popstate",function(e) {
     // NProgress.start()
@@ -180,7 +207,6 @@ $(document).ready(function(){
     // })
 
 })
-
 
 
 $(document).ready(function(){

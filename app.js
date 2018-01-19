@@ -8,8 +8,8 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var post_articles = require('./routes/post_articles');
 var get_articles = require('./routes/get_articles');
-var get_talks = require('./routes/get_talks');
-var post_talks = require('./routes/post_talks')
+// var get_talks = require('./routes/get_talks');
+// var post_talks = require('./routes/post_talks')
 
 var app = express();
 
@@ -28,8 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/post_articles', post_articles);
 app.use('/get_articles', get_articles);
-app.use('/get_talks', get_talks);
-app.use('/post_talks', post_talks);
+// app.use('/get_talks', get_talks);
+// app.use('/post_talks', post_talks);
 
 //设置跨域访问
 app.all('*', function(req, res, next) {
