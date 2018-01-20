@@ -25,6 +25,34 @@ li{
 #add-button{
     z-index: 100;
 }
+.layui-layer-btn a{
+    color:#FF4081 !important;
+    border: 0 !important;
+    background-color: transparent !important;
+}
+.layui-layer-title{
+    background-color: transparent !important;
+    border: 0 !important;
+    padding: 24px 80px 0 20px !important;
+}
+.layui-layer-input{
+    border: 0 !important;
+    border-bottom: 1px solid rgba(0,0,0,.42) !important;
+    outline:none  !important;
+    font-size: 16px !important;
+    font-family: Roboto,Noto,Helvetica,Arial,sans-serif !important;
+    cursor: pointer;
+}
+/* .layui-layer-input:hover{
+    box-shadow:  0 1px 0 0 black !important;
+} */
+.layui-layer-input-focus{
+    /* border-bottom-color: #FF4081 !important; */
+    box-shadow:  0 1px 0 0 #FF4081 !important;
+}
+.layui-layer-prompt .layui-layer-content{
+    padding: 0 24px 18px 24px!important;
+}
 
 
 

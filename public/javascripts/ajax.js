@@ -23,11 +23,6 @@ function get_articles(){
 	}
     xmlhttp.open('GET','/get_articles',true)
     xmlhttp.send()
-    // mdui.alert(" 欢迎你!",'',false,true,false);
-    const dialog1 = new mdui.Dialog("#dialog1", {
-        histroy: false
-      })
-    dialog1.open();
 }
 
 function post_articles(){
@@ -151,27 +146,39 @@ $(document).ready(function(){
     	}
     	return "";
     }
-    // function checkCookie(){
-    //     var user=getCookie("uid");
-    // 	if (user!=""){
-    //         mdui.alert(user+" 欢迎你!");
-    //     }
-	//     else {
-	//     	user =mdui.prompt('请输入用户名:', 
-    //         function (user) {
-    //             if (user!="" && user!=null){
-    //             setCookie("uid",user,365);
-    //             mdui.alert(user+" 欢迎你!");
-    //     	    }
-    //         },
-    //         function (user) {
-    //         console.log('qqwew')
-    //         },
-    //         {confirmText:"确定",cancelText:"取消"}
-    //     ) 
-    //     }
-    // }
-    // checkCookie()
+    function checkCookie(){
+        var user=getCookie("uid");
+    	if (user!=""){
+            // alert(user+" 欢迎你!");
+            layer.msg(user+' 欢迎你!',{time:1000}) 
+        }
+	    else {
+            // user 
+            var index=layer.prompt({
+                formType: 0,
+                title: '请输入ID',
+              }, function(user, index, elem){ 
+                layer.close(index);
+                setCookie("uid",user,365);
+                layer.msg(user+' 欢迎你!',{time:1000}) 
+              });
+            $('.layui-layer-title').css({"color":"rgba(0,0,0,.54)"})
+            $('.layui-layer-input').click(function(){
+                $(this).addClass('layui-layer-input-focus')
+                // console.log($('.layui-layer-title').css('color'))
+                $('.layui-layer-title').css({"color":"#FF4081"})
+            })
+            $('.layui-layer-input').blur(function(){
+                $(this).removeClass('layui-layer-input-focus')
+                $('.layui-layer-title').css({"color":"rgba(0,0,0,.54)"})
+            })
+            // if (user!="" && user!=null){
+            //   setCookie("uid",user,365);
+            // }
+            // console.log(user) 
+        }
+    }
+    checkCookie()
     // get_talks()
     //popstate事件 点击前进后退
     // window.addEventListener("popstate",function(e) {

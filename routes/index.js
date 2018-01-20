@@ -6,13 +6,13 @@ var cookieParser = require('cookie-parser')
 
 
 /* GET home page. */
-router.get('/index', function(req, res, next) {
-    if(req.cookies.uid){
+router.get('/', function(req, res, next) {
+    // if(req.cookies.uid){
         // res.cookie('uid', req.cookies.uid, { maxAge: 31536000000, httpOnly: true })
         res.render('index')
-    }else{
-        res.render('newuser')
-    }
+    // }else{
+    //     res.render('newuser')
+    // }
 
 });
 
